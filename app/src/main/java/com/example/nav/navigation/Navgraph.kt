@@ -88,8 +88,8 @@ fun Navgraph(
                 EditProfileScreen(
                     userId = userId,
                     onNavigateBack = {
-                        navController.navigateUp()
-                        //navController.popBackStack()
+                        navController.navigateUp() //recommended
+                        //navController.popBackStack()  / not recommended
                     }
                 )
             }
