@@ -9,24 +9,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
 fun BottomBarNav(
     navController: NavController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier// empty
 ) {
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.background,
+        containerColor = MaterialTheme.colorScheme.surface,
     ){
 
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentDestination = navBackStackEntry?.destination
         val currentRoute = currentDestination?.route
 
-        BottomItemNav.bottomIcon.forEach { bottomItemNav ->
-            val isSelected = currentDestination?.route == bottomItemNav.route
+        BottomItemNav.bottomIcons.forEach { bottomItemNav ->
+            val isSelected = currentDestination?.route == bottomItemNav.route //boolean
 
             NavigationBarItem(
                 selected = isSelected,
@@ -45,7 +44,7 @@ fun BottomBarNav(
                 icon = {
                     Icon(
                         imageVector = bottomItemNav.icon,
-                        contentDescription = bottomItemNav.title,
+                        contentDescription = bottomItemNav.title, // accessibility
                         tint = if (isSelected) {
                             MaterialTheme.colorScheme.primary
                         } else {

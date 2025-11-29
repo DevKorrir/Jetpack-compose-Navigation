@@ -29,7 +29,7 @@ fun Navgraph(
     val currentBackStack by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStack?.destination?.route
 
-    val bottomRoutes = BottomItemNav.bottomIcon.map { it.route }
+    val bottomRoutes = BottomItemNav.bottomIcons.map { it.route }
     val shouldShowBottomBar = currentRoute in bottomRoutes
 
 
@@ -83,12 +83,13 @@ fun Navgraph(
                 arguments = listOf(navArgument("userId") { type = NavType.StringType })
             ) { backStackEntry ->
                 val userId = backStackEntry.arguments?.getString("userId") ?: "unknown"
-                android.util.Log.d("NavDebug", "EditProfile screen - Received userId: $userId")
-                android.util.Log.d("NavDebug", "EditProfile screen - All arguments: ${backStackEntry.arguments}")
+//                android.util.Log.d("NavDebug", "EditProfile screen - Received userId: $userId")
+//                android.util.Log.d("NavDebug", "EditProfile screen - All arguments: ${backStackEntry.arguments}")
                 EditProfileScreen(
                     userId = userId,
                     onNavigateBack = {
                         navController.navigateUp()
+                        //navController.popBackStack()
                     }
                 )
             }
